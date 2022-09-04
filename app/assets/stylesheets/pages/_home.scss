@@ -1,0 +1,13 @@
+@media(max-width: 768px) {
+  .home {
+    grid-template-columns: 1fr;
+    background-color: #212B4D;
+    height: 1080px;
+  }
+
+  .logo{
+    margin-top: 250px;
+    margin-left: 284px;
+    width: 200px;
+  }
+}

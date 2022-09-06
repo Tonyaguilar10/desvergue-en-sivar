@@ -1,13 +1,34 @@
-@media(max-width: 768px) {
-  .home {
-    grid-template-columns: 1fr;
-    background-color: #212B4D;
-    height: 1080px;
-  }
+.home {
+  background-color: #212B4D;
+  height: 1080px;
+}
 
-  .logo{
-    margin-top: 250px;
-    margin-left: 284px;
-    width: 200px;
-  }
+.cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card{
+  margin-top: 100px;
+  width: 250px;
+  background-color: #212B4D;
+  border: #212B4D;
+  align-items: center;
+}
+.logo{
+  width: 200px;
+}
+.start-line{
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: white;
+  width: 250px;
+  text-align: center;
+}
+#start-btn{
+  color: #f2f2f2;
+  background-color: gray;
+  margin-top: 15px;
 }

@@ -1,7 +1,13 @@
 <div class="home">
-  <%= image_tag "Logo en blanco.png", class: "logo" %>
-  <div>
-    <h3>Que empiece el desvergue!</h3>
-    <%= link_to 'Comenzar', root_path, class: "btn btn-ghost", id:"log-in" %>
+  <div class="container">
+    <div class="row cards">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 card">
+        <%= image_tag "Logo en blanco.png", class: "logo" %>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 start-line">
+        <h3>Que empiece el desvergue!</h3>
+        <%= link_to 'Comenzar', root_path, class: "btn btn-ghost", id:"start-btn" %>
+      </div>
+    </div>
   </div>
 </div>

@@ -3,7 +3,6 @@ class ChallengesController < ApplicationController
   before_action :set_challenge, only: %i[show edit update]
 
   def home
-
   end
 
   def index

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyString
+  in_deck: false
+  drawn: false
+  used: false
+
+two:
+  content: MyString
+  in_deck: false
+  drawn: false
+  used: false

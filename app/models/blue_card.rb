@@ -1,0 +1,2 @@
+class BlueCard < ApplicationRecord
+end

@@ -1,4 +1,9 @@
 <div class="container">
   <h3>Room Token:</h3><strong><%=@gameroom.password%></strong>
 <h4><%= @gameroom.user.name %>'s room</h4>
+<br>
+<% @blue_deck.each do |card| %>
+  <%= card.content %>
+  <br>
+<% end %>
 </div>

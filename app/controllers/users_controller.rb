@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.safe
-      redirect_to users_path
+    if @user.save
+      redirect_to  new_user_gameroom_path(@user)
     else
       render :new
     end

@@ -1,0 +1,23 @@
+<div class="container">
+  <h3>Create a Gameroom to play with your friends!</h3>
+  <%= simple_form_for [@user, @gameroom] do |f| %>
+    <%= f.error_notification %>
+    <div class="form-actions">
+      <%= f.button :submit, "Create Room", class: "btn btn-ghost", id:"start-btn"%>
+    </div>
+  <% end %>
+  <h3>Or join an existing room</h3>
+  <%= form_tag new_user_gameroom_path(@user), method: :get do %>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "form-control col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3",
+        placeholder: "Find a Room"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+  <% if @room.nil? %>
+    <h4>Room not found</h4>
+  <% else %>
+    <%=@room.user.name%>'s room found <%= link_to 'Join', user_gameroom_path(@user, @room), class: "btn btn-ghost", id:"start-btn" %>
+  <% end %>
+</div>

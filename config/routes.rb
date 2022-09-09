@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'gamerooms/show'
-  get 'users/index'
-  get 'users/new'
-  get 'users/create'
   root to: "challenges#home"
+  resources :challenges
+  resources :responses
+  resources :users, only: [ :new, :create ] do
+    resources :gamerooms, only: [ :index, :new, :create, :show ]
+  end
 end

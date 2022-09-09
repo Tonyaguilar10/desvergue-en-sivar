@@ -1,6 +1,6 @@
 class BlueCardsController < ApplicationController
 
-  def create_deck
+  def self.create_deck
     blue_db = Challenge.all
     blue_db.each do |card|
       blue_deck = BlueCard.new(content: card.text, in_deck: true, drawn: false, used: false)

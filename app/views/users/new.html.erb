@@ -1,2 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container">
+  <h3>First create a Player</h3>
+   <%= simple_form_for( @user ) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" }%>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Create User", class: "btn btn-ghost", id:"start-btn"%>
+    </div>
+  <% end %>
+</div>

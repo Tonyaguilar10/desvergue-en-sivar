@@ -46,5 +46,8 @@ class GameroomsController < ApplicationController
     @gameroom = Gameroom.find(params[:id])
     @blue_deck = BlueCard.all.where(gameroom_id: @gameroom.id)
     @white_deck = WhiteCard.all.where(gameroom_id: @gameroom.id)
+    last_card = @blue_deck.count
+    index = rand(0..last_card)
+    text = @blue_deck[index].content
   end
 end

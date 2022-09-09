@@ -3,7 +3,7 @@
 <h4><%= @gameroom.user.name %>'s room</h4>
 <br>
 <% @blue_deck.each do |card| %>
-  <%= card.content %>
+  <% card.content %>
   <br>
 <% end %>
-</div>
+<h4>Grab a blue card</h4>

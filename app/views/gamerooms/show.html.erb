@@ -2,8 +2,15 @@
   <h3>Room Token:</h3><strong><%=@gameroom.password%></strong>
 <h4><%= @gameroom.user.name %>'s room</h4>
 <br>
-<% @blue_deck.each do |card| %>
-  <% card.content %>
-  <br>
+<%# <% blue_deck.each do |card| %>
+  <%# <% card.content %>
+  <%# <br> %>
+<%# <% end %>
+
+<% if @blue_deck.empty? %>
+  <h1><%= @text %></h1>
+  <%= link_to 'start over', user_gameroom_restart_blue_path(@user, @gameroom), method: "patch", class: "btn btn-ghost", id:"start-btn" %>
+<% else %>
+  <h1><%= @text %></h1>
+  <%= link_to 'Grab a blue card', user_gameroom_grab_blue_path(@user, @gameroom), method: "post", class: "btn btn-ghost", id:"start-btn" %>
 <% end %>
-<h4>Grab a blue card</h4>

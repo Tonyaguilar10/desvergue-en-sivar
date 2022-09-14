@@ -43,11 +43,57 @@ class GameroomsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     @gameroom = Gameroom.find(params[:id])
-    @blue_deck = BlueCard.all.where(gameroom_id: @gameroom.id)
+    @blue_deck = BlueCard.all.where(gameroom_id: @gameroom.id).and(BlueCard.all.where(in_deck: true))
+    @blue_drawn = BlueCard.all.where(gameroom_id: @gameroom.id).and(BlueCard.all.where(drawn: true))
     @white_deck = WhiteCard.all.where(gameroom_id: @gameroom.id)
+    if @blue_deck.empty? && @blue_drawn.count < 1
+      @text = "Start over the game"
+    else
+      draw_card = BlueCard.find_by(drawn: true)
+      if draw_card.nil?
+        @text = "Que empiece el desvergue"
+      else
+        @text = draw_card.content
+      end
+    end
+  end
+
+  def get_blue_card
+    @user = User.find(params[:user_id])
+    @gameroom = Gameroom.find(params[:gameroom_id])
+    @blue_deck = BlueCard.all.where(gameroom_id: @gameroom.id).and(BlueCard.all.where(in_deck: true))
+    # @white_deck = WhiteCard.all.where(gameroom_id: @gameroom.id)
+    card_in_deck = BlueCard.find_by(drawn: true)
+    if card_in_deck.nil? == false
+      card_in_deck.drawn = false
+      card_in_deck.used = true
+      card_in_deck.save
+    end
     last_card = @blue_deck.count
-    index = rand(0..last_card)
-    text = @blue_deck[index].content
+    index = rand(1..last_card)
+    draw_card = @blue_deck[index - 1]
+    until draw_card.in_deck
+      index = rand(0..last_card)
+      draw_card = @blue_deck[index]
+    end
+    draw_card.drawn = true
+    draw_card.in_deck = false
+    draw_card.save
+    redirect_to user_gameroom_path(@user, @gameroom)
+  end
+
+  def restart_blue_cards
+    @user = User.find(params[:user_id])
+    @gameroom = Gameroom.find(params[:gameroom_id])
+    @blue_deck = BlueCard.all.where(gameroom_id: @gameroom.id).and(BlueCard.all.where(used: true))
+    @blue_deck.each do |card|
+      card.in_deck = true
+      card.drawn = false
+      card.used = false
+      card.save
+    end
+    redirect_to user_gameroom_path(@user, @gameroom)
   end
 end
